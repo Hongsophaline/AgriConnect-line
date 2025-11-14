@@ -28,6 +28,7 @@ export const registerUser = async (data: {
   return user;
 };
 
+//login
 export const generateToken = (user: IUser) => {
   const secret = process.env.JWT_SECRET;
   if (!secret) throw new Error("JWT_SECRET is not defined");
@@ -39,4 +40,19 @@ export const generateToken = (user: IUser) => {
 
   const payload = { id: user._id, email: user.email, role: user.role };
   return jwt.sign(payload, secret, options);
+};
+
+export const loginUser = async (
+  email: string,
+  password: string
+): Promise<IUser> => {
+  // Find user by email
+  const user = await userModel.findOne({ email });
+  if (!user) throw new Error("Invalid email or password");
+
+  // Compare password
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) throw new Error("Invalid email or password");
+
+  return user;
 };
