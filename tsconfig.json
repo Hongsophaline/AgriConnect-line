@@ -1,0 +1,19 @@
+// {
+//   "compilerOptions": {
+//     "target": "es6",
+//     "module": "commonjs",
+//     "rootDir": "./src",
+//     "outDir": "./dist",
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "strict": true,
+//     "moduleResolution": "node",
+//     "skipLibCheck": true
+//   }
+// }
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
